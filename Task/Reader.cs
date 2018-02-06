@@ -11,8 +11,14 @@ namespace Task
 {
     static class Reader
     {
+        /// <summary>
+        /// Метод извлекает все уникальные города ,которых нет в списке городов allcity, из файла
+        /// </summary>
+        /// <param name="filepath">Путь к файлу</param>
+        /// <param name="allcity">Список городов</param>
         public static void GetAllCityFromFile(string filepath, ref List<City> allcity)
         {
+            Console.WriteLine(filepath);
             try
             {
                 using (StreamReader reader = new StreamReader(filepath, Encoding.Default))
@@ -20,17 +26,20 @@ namespace Task
                     string line;
                     while ((line = reader.ReadLine()) != null)
                     {
-                        Compares.Compare(ref allcity, new City(line));
-                        //Console.WriteLine(filepath + line);
+                        Compares.Compare(ref allcity, new City(line));  //Суммирование численности или добавление в список нового города
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(filepath+ " "+ ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
-
+        /// <summary>
+        /// Метод извлекает все уникальные города ,которых нет в списке городов allcity, из URL-адрес
+        /// </summary>
+        /// <param name="url">URL-адрес</param>
+        /// <param name="allcity">Список городов</param>
         public static void GetAllCityFromWeb(string url, ref List<City> allcity)
         {
             try

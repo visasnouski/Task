@@ -40,7 +40,6 @@ namespace Task.Test
             Assert.AreEqual(expected, actual);
         }
 
-
         [TestMethod]
         public void CityClassTest()
         {

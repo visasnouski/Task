@@ -8,22 +8,22 @@ namespace Task
 {
    public class City
     {
-        private string name;
-        private int population;
-       
+        private string name; //Имя города
+        private int population; //Численность населения
 
-        public string Name { get { return name; } }
-        public int Population { get { return population; } }
-        public City(string line)
+
+        public string Name { get { return name;}}
+        public int Population { get { return population;}}
+        public City(string line) //Конструктор
         {
             try
             {
-                int lenght = SplitCity.Count(line);
+                int lenght = SplitCity.Count(line); //Размер массива после разделения строки символом ','
                 if (lenght == 2)
                 {
 
-                    this.name = SplitCity.GetName(line);
-                    this.population = SplitCity.GetPopulation(line);
+                    this.name = SplitCity.GetName(line); //Получить имя города из строки
+                    this.population = SplitCity.GetPopulation(line);// Получить численность населения из строки
                 }
                 else
                 { Console.WriteLine("Неверный формат строк в файле" + line); }
@@ -32,6 +32,10 @@ namespace Task
                 Console.WriteLine("Неверный формат строк в файле "+line);
             }
         }
+        /// <summary>
+        /// Суммировать численность населения
+        /// </summary>
+        /// <param name="count"></param>
         public void Addpopulation(int count)
         {
             this.population += count;

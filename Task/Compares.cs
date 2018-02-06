@@ -8,6 +8,11 @@ namespace Task
 {
    static class Compares
     {
+        /// <summary>
+        /// Метод поиска одинаковых городов и суммирования их численности населения если есть совпадение, иначе новый город добавляется в список городов
+        /// </summary>
+        /// <param name="allcity">Cписок городов</param>
+        /// <param name="city">Один город</param>
         public static void Compare(ref List<City> allcity, City city)
         {
             bool overlap = false;
@@ -17,7 +22,7 @@ namespace Task
                 {
                     if (String.Compare(one.Name, city.Name, true) == 0)
                     {
-                        one.Addpopulation(city.Population);
+                        one.Addpopulation(city.Population); //Суммирования численности населения одинаковых городов
                         overlap = true;
                         break;
                     }
@@ -26,7 +31,7 @@ namespace Task
                 {
                     if (city.Name!=null)
                     {
-                        allcity.Add(city);
+                        allcity.Add(city);// Добавление нового города в список городов
                     }
                 }
             }
