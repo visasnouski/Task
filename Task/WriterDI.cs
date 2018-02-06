@@ -17,19 +17,13 @@ namespace Task
         public void Write(List<City> allcity, string filename)
         {
             Console.WriteLine("Запись в файл output.txt");
-            try
+
+            if (File.Exists(filename))
             {
-                if (File.Exists(filename))
-                {
-                    File.Delete(filename);
-                }
-                foreach (City one in allcity)
-                    File.AppendAllText(filename, one.ToString(), Encoding.UTF8);
+                File.Delete(filename);
             }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            foreach (City one in allcity)
+                File.AppendAllText(filename, one.ToString(), Encoding.UTF8);
         }
     }
 }

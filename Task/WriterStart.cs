@@ -15,7 +15,14 @@ namespace Task
         }
         public void WriteData(List<City> allcity, string filename)
         {
-            _Write.Write(allcity, filename);
+            try
+            {
+                _Write.Write(allcity, filename);
+            }
+            catch(Exception ep)
+            {
+                Console.WriteLine(ep.Message);
+            }
         }
     }
 }

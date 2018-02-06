@@ -18,7 +18,7 @@ namespace Task
             {
                 string[] files = Directory.GetFiles(args[0]);
                 Start(files);
-        }
+            }
             else
                 Console.WriteLine("Папка не найдена");
         }
