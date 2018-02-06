@@ -3,14 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
+using System.Configuration;
+using System.IO;
 
 namespace Task
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
-        {
 
+        public static void Main(string[] args)
+        {
+            if (args.Length >= 1 && Directory.Exists(args[0]))
+            {
+                string[] files = Directory.GetFiles(args[0]);
+                Start(files);
+            }
+            else
+                Console.WriteLine("Папка не найдена");
         }
+
+
+
+        public static void Start(string[] files)
+        {
+            int N = Convert.ToInt32(ConfigurationSettings.AppSettings["N"]);
+            List<City> allcity = new List<City>();
+
+            Parallel.For(0, files.Length, new ParallelOptions { MaxDegreeOfParallelism = N },
+                i => {
+                    Reader.GetAllCityFromFile(files[i], ref allcity);
+                });
+
+            Console.WriteLine("Запись в файл output.txt");
+
+            Writer.Write(allcity, "output.txt");
+        }
+
+
+
     }
 }
