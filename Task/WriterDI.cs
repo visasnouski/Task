@@ -7,15 +7,16 @@ using System.IO;
 
 namespace Task
 {
-   static class Writer
+    class WriterDI :IWriterDI
     {
         /// <summary>
         /// Метод сохраняет список городов allcity в файл filename
         /// </summary>
         /// <param name="allcity">Список городов</param>
         /// <param name="filename">Имя файла</param>
-        public static void Write(List<City> allcity, string filename)
+        public void Write(List<City> allcity, string filename)
         {
+            Console.WriteLine("Запись в файл output.txt");
             try
             {
                 if (File.Exists(filename))

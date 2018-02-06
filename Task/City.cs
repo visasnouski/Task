@@ -10,7 +10,7 @@ namespace Task
     {
         private string name; //Имя города
         private int population; //Численность населения
-
+        private string key;
 
         public string Name { get { return name;}}
         public int Population { get { return population;}}
@@ -21,9 +21,9 @@ namespace Task
                 int lenght = SplitCity.Count(line); //Размер массива после разделения строки символом ','
                 if (lenght == 2)
                 {
-
                     this.name = SplitCity.GetName(line); //Получить имя города из строки
                     this.population = SplitCity.GetPopulation(line);// Получить численность населения из строки
+                    this.key = this.name.Remove(2);
                 }
                 else
                 { Console.WriteLine("Неверный формат строк в файле" + line); }

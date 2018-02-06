@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Task
 {
@@ -33,6 +34,18 @@ namespace Task
                     {
                         allcity.Add(city);// Добавление нового города в список городов
                     }
+                }
+            }
+        }
+
+        public static void Update(StreamReader reader,ref List<City> allcity)
+        {
+            using (StreamReader rd =reader)
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    Compares.Compare(ref allcity, new City(line));  //Суммирование численности или добавление в список нового города
                 }
             }
         }
