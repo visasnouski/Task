@@ -41,22 +41,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseClasses\CompareDI.cs" />
     <Compile Include="BinarySearchAndInsert.cs" />
     <Compile Include="City.cs" />
     <Compile Include="Compares.cs" />
-    <Compile Include="IFromDI.cs" />
-    <Compile Include="IWriterDI.cs" />
+    <Compile Include="Interface\ICompare.cs" />
+    <Compile Include="Interface\IFromDI.cs" />
+    <Compile Include="Interface\IWriterDI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FromFIleDI.cs" />
-    <Compile Include="FromWebDI.cs" />
-    <Compile Include="ReaderStart.cs" />
+    <Compile Include="BaseClasses\FromFIleDI.cs" />
+    <Compile Include="BaseClasses\FromWebDI.cs" />
+    <Compile Include="StartClasses\CompareStart.cs" />
+    <Compile Include="StartClasses\ReaderStart.cs" />
     <Compile Include="Split.cs" />
-    <Compile Include="WriterDI.cs" />
-    <Compile Include="WriterStart.cs" />
+    <Compile Include="BaseClasses\WriterDI.cs" />
+    <Compile Include="StartClasses\WriterStart.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
