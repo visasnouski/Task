@@ -9,33 +9,40 @@ using System.IO;
 
 namespace Task
 {
-    public class Program
+    public static class Program
     {
-
+        public static string path;
         public static void Main(string[] args)
         {
-            if (args.Length >= 1 && Directory.Exists(args[0]))
-            {
-                string[] files = Directory.GetFiles(args[0]);
-                Start(files);
-            }
-            else
-                Console.WriteLine("Папка не найдена");
+            path = @"f:\testtask\base\";
+            DataSourceStart _source = new DataSourceStart(new DataSourceDI());
+            IEnumerable<string> listEnum = _source.GetData();
+
+           
+            // var singleString = string.Join(Environment.NewLine, listEnum.ToArray());
+
+            ParserStart _parse = new ParserStart(new ParserDI());
+            Dictionary< string, int> allCity = _parse.GetData(listEnum);
+
+            WriterStart write = new WriterStart(new WriterDI());
+            write.WriteData(allCity, "output.txt");
+
         }
 
         public static void Start(string[] files)
         {
-            int N = Convert.ToInt32(ConfigurationSettings.AppSettings["N"]);
-            List<City> allcity = new List<City>(); //Список городов
-            ReaderStart reader = new ReaderStart(new FromFIleDI()); //Чтение из файла;
-            Parallel.For(0, files.Length, new ParallelOptions { MaxDegreeOfParallelism = N },  //Обработка файлов производится параллельно, максимум N файлов одновременно
-                i =>
-               {
-                   reader.ReadGet(files[i], ref allcity);
-               });
+           
+            //Сохранение списка allcity в файл
+            //int N = Convert.ToInt32(ConfigurationSettings.AppSettings["N"]);
+            //List<City> allcity = new List<City>(); //Список городов
+            //ReaderStart reader = new ReaderStart(new FromFIleDI()); //Чтение из файла;
+            //Parallel.For(0, files.Length, new ParallelOptions { MaxDegreeOfParallelism = N },  //Обработка файлов производится параллельно, максимум N файлов одновременно
+            //    i =>
+            //   {
+            //       reader.ReadGet(files[i], ref allcity);
+            //   });
 
-            WriterStart write = new WriterStart(new WriterDI());
-            write.WriteData(allcity, "output.txt"); //Сохранение списка allcity в файл
+
         }
 
 

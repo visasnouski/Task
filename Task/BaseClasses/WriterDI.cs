@@ -9,21 +9,10 @@ namespace Task
 {
     class WriterDI :IWriterDI
     {
-        /// <summary>
-        /// Метод сохраняет список городов allcity в файл filename
-        /// </summary>
-        /// <param name="allcity">Список городов</param>
-        /// <param name="filename">Имя файла</param>
-        public void Write(List<City> allcity, string filename)
+  public void Write(Dictionary<string, int> allcity, string filename)
         {
             Console.WriteLine("Запись в файл output.txt");
-
-            if (File.Exists(filename))
-            {
-                File.Delete(filename);
-            }
-            foreach (City one in allcity)
-                File.AppendAllText(filename, one.ToString(), Encoding.UTF8);
+            File.WriteAllLines(filename,allcity.Select(kvp => string.Format("{0},{1}", kvp.Key, kvp.Value)));
         }
     }
 }

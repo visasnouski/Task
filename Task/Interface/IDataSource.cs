@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Task
 {
-    public interface IWriterDI
+    interface IDataSource
     {
-        void Write(Dictionary<string, int> allcity, string filename);
+        IEnumerable<string> GetData();
     }
 }

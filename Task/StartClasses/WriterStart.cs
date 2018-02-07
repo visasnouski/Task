@@ -13,7 +13,7 @@ namespace Task
         {
             _Write = writerDI;
         }
-        public void WriteData(List<City> allcity, string filename)
+        public void WriteData(Dictionary< string, int> allcity, string filename)
         {
             try
             {
