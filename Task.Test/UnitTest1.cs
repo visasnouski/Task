@@ -27,10 +27,10 @@ namespace Task.Test
         }
 
         [TestMethod]
-        public void ProgramMainTestForInManyLanguages()
+        public void ProgramMainTestForInManyLanguagesBinarySearch()
         {
             //arrange
-            string[] expectedmas = new string[] { "Санкт-Петербург,100", "Минск,100", "Молодечно,40", "Березинское,56", "圣彼得堡,5666", "מינסק,7777" };
+            string[] expectedmas = new string[] { "Березинское,56", "Минск,100", "Молодечно,40", "Санкт-Петербург,100", "מינסק,7777", "圣彼得堡,5666", };
             string expected = String.Join(Environment.NewLine, expectedmas);
             // act
             Program.Main(new string[] { path });

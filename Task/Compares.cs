@@ -10,11 +10,11 @@ namespace Task
    static class Compares
     {
         /// <summary>
-        /// Метод поиска одинаковых городов и суммирования их численности населения если есть совпадение, иначе новый город добавляется в список городов
+        /// Метод поиска для маленьких данных одинаковых городов и суммирования их численности населения если есть совпадение, иначе новый город добавляется в список городов
         /// </summary>
         /// <param name="allcity">Cписок городов</param>
         /// <param name="city">Один город</param>
-        public static void Compare(ref List<City> allcity, City city)
+        private static void CompareCompareBinaryForSmallFile(ref List<City> allcity, City city)
         {
             bool overlap = false;
             lock (allcity)
@@ -32,8 +32,48 @@ namespace Task
                 {
                     if (city.Name!=null)
                     {
+                        
                         allcity.Add(city);// Добавление нового города в список городов
+                       
                     }
+                }
+            }
+        }
+
+        private static void SearchAndInsert(ref List<City> allcity,City one, BinarySearchAndInsert dc)
+        {
+            //Console.WriteLine("\nBinarySearch and Insert \"{0}\":", one);
+
+            int index = allcity.BinarySearch(one, dc);
+
+            if (index < 0)
+            {
+                allcity.Insert(~index, one);
+            }
+            if (index >= 0)
+            {
+                allcity[index].Addpopulation(one.Population);
+            }
+        }
+        /// <summary>
+        /// Метод поиска для больших данных одинаковых городов и суммирования их численности населения если есть совпадение, иначе новый город добавляется в список городов
+        /// </summary>
+        /// <param name="allcity">Cписок городов</param>
+        /// <param name="city">Один город</param>
+        private static void CompareBinaryForBigFile(ref List<City> allcity, City city)
+        {
+            bool overlap = false;
+            BinarySearchAndInsert bsCity = new BinarySearchAndInsert();
+            lock (allcity)
+            {
+                if (city.Name != null)
+                {
+                    if (allcity.Count != 0)
+                    {
+                        SearchAndInsert(ref allcity, city, bsCity);
+                       }
+                    else
+                        allcity.Add(city);
                 }
             }
         }
@@ -45,7 +85,8 @@ namespace Task
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    Compares.Compare(ref allcity, new City(line));  //Суммирование численности или добавление в список нового города
+                    Compares.CompareBinaryForBigFile(ref allcity, new City(line));  //Для больших файлов 
+                   // Compares.Compare(ref allcity, new City(line));  //Для маленьких файлов
                 }
             }
         }

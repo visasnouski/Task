@@ -27,7 +27,6 @@ namespace Task
         {
             int N = Convert.ToInt32(ConfigurationSettings.AppSettings["N"]);
             List<City> allcity = new List<City>(); //Список городов
-                                                   // Dictionary<string, City> allcityDI = new Dictionary<string, City>();
             ReaderStart reader = new ReaderStart(new FromFIleDI()); //Чтение из файла;
             Parallel.For(0, files.Length, new ParallelOptions { MaxDegreeOfParallelism = N },  //Обработка файлов производится параллельно, максимум N файлов одновременно
                 i =>
@@ -36,8 +35,8 @@ namespace Task
                });
 
             WriterStart write = new WriterStart(new WriterDI());
-            write.WriteData(allcity, "output.txt");
-           // Writer.Write(allcity, ); //Сохранение списка allcity в файл
+            write.WriteData(allcity, "output.txt"); //Сохранение списка allcity в файл
+                                                   
         }
 
 

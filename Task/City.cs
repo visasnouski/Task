@@ -14,6 +14,7 @@ namespace Task
 
         public string Name { get { return name;}}
         public int Population { get { return population;}}
+        public string Key { get { return key; } }
         public City(string line) //Конструктор
         {
             try
@@ -23,12 +24,13 @@ namespace Task
                 {
                     this.name = SplitCity.GetName(line); //Получить имя города из строки
                     this.population = SplitCity.GetPopulation(line);// Получить численность населения из строки
-                    this.key = this.name.Remove(2);
+                    this.key = this.name.ToLower().Replace(" ", "");
                 }
                 else
                 { Console.WriteLine("Неверный формат строк в файле" + line); }
             }
             catch {
+                this.name = null;
                 Console.WriteLine("Неверный формат строк в файле "+line);
             }
         }
