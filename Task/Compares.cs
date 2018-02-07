@@ -50,7 +50,6 @@ namespace Task
                 while ((line = reader.ReadLine()) != null)
                 {
                     _compare.Comare(ref allcity, new City(line));  //Для больших файлов 
-                 // Compares.CompareCompareBinaryForSmallFile(ref allcity, new City(line));  //Для маленьких файлов
                 }
             }
         }
