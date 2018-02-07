@@ -29,34 +29,26 @@ namespace Task
         static IEnumerable<string> lines;
         private IEnumerable<string> NeeData(string[] files)
         {
-
-
             List<string> alldata = new List<string>();
-
             string seperator = "";
             string itog = "";
             int N = Convert.ToInt32(ConfigurationSettings.AppSettings["N"]);
             Parallel.For(0, files.Length, new ParallelOptions { MaxDegreeOfParallelism = N },  //Обработка файлов производится параллельно, максимум N файлов одновременно
                 i =>
                {
-                   using (StreamReader reader = new StreamReader (files[i],Encoding.Default))
+                   using (StreamReader reader = new StreamReader(files[i], Encoding.Default))
                    {
-                       
-                           string line = "";
+                       string line = "";
                        lock (line)
                        {
                            while ((line = reader.ReadLine()) != null)
                            {
-
                                alldata.Add(line);
-
                            }
                        }
                    }
                });
-
             return alldata;
-
         }
 
     }

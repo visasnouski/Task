@@ -48,7 +48,6 @@
     <Compile Include="Interface\IWriterDI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BaseClasses\FromWebDI.cs" />
     <Compile Include="StartClasses\DataSourceStart.cs" />
     <Compile Include="StartClasses\ParserStart.cs" />
     <Compile Include="BaseClasses\WriterDI.cs" />
