@@ -18,7 +18,7 @@ namespace Task
             DataSourceStart _source = new DataSourceStart(new DataSourceDI());
             IEnumerable<string> listEnum = _source.GetData();
             ParserStart _parse = new ParserStart(new ParserDI());
-            Dictionary<string, int> allCity = _parse.GetData(listEnum);
+            Dictionary<string, int> allCity = _parse.GetCityDictionary(listEnum);
             WriterStart write = new WriterStart(new WriterDI());
             write.WriteData(allCity, "output.txt");
 

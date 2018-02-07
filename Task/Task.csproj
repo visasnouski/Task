@@ -41,27 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseClasses\CompareDI.cs" />
     <Compile Include="BaseClasses\DataSourceDI.cs" />
     <Compile Include="BaseClasses\ParserDI.cs" />
-    <Compile Include="BinarySearchAndInsert.cs" />
-    <Compile Include="City.cs" />
-    <Compile Include="CityEqualityComparer.cs" />
-    <Compile Include="Compares.cs" />
-    <Compile Include="Interface\ICompare.cs" />
     <Compile Include="Interface\IDataSource.cs" />
-    <Compile Include="Interface\IFromDI.cs" />
     <Compile Include="Interface\IParser.cs" />
     <Compile Include="Interface\IWriterDI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BaseClasses\FromFIleDI.cs" />
     <Compile Include="BaseClasses\FromWebDI.cs" />
-    <Compile Include="StartClasses\CompareStart.cs" />
     <Compile Include="StartClasses\DataSourceStart.cs" />
     <Compile Include="StartClasses\ParserStart.cs" />
-    <Compile Include="StartClasses\ReaderStart.cs" />
-    <Compile Include="Split.cs" />
     <Compile Include="BaseClasses\WriterDI.cs" />
     <Compile Include="StartClasses\WriterStart.cs" />
   </ItemGroup>

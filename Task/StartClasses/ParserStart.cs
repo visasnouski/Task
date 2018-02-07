@@ -15,48 +15,16 @@ namespace Task
             _parse = ParserDI;
         }
 
-        public Dictionary<string, int> GetData(IEnumerable<string> listEnum)
-        {
-
-            Dictionary<string, int> dc = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-            foreach (var x in listEnum)
-            {
-                string key = GetName(x);
-                int value = GetPopulation(x);
-                if (dc.ContainsKey(key))
-                {
-                    dc[key] += value;
-
-                }
-                else
-                {
-                    dc.Add(key, value);
-                }
-            }
-            return dc;
-        }
-        private static int GetPopulation(string line)
+        public Dictionary<string, int> GetCityDictionary(IEnumerable<string> listEnum)
         {
             try
             {
-                return Convert.ToInt32(line.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[1]);
+              return  _parse.GetCityDictionary(listEnum);
             }
-            catch (Exception exp)
+            catch (Exception ep)
             {
-                Console.WriteLine(exp.Message);
-                return 0;
-            }
-        }
-        private static string GetName(string line)
-        {
-            try
-            {
-                return line.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[0];
-            }
-            catch (Exception exp)
-            {
-                Console.WriteLine(exp.Message);
-                return "";
+                Console.WriteLine(ep.Message);
+                return null;
             }
         }
     }
