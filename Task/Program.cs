@@ -36,7 +36,6 @@ namespace Task
 
             WriterStart write = new WriterStart(new WriterDI());
             write.WriteData(allcity, "output.txt"); //Сохранение списка allcity в файл
-                                                   
         }
 
 

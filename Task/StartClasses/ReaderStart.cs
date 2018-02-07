@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task
 {
-    class ReaderStart
+   public class ReaderStart
     {
         private IFromDI _Read;
         public ReaderStart(IFromDI ReaderDI)
