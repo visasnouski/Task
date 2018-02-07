@@ -8,7 +8,7 @@ namespace Task
 {
     class ParserDI : IParser
     {
-        public Dictionary<City, int> GetCityDictionary()
+        public Dictionary<string, int> GetCityDictionary()
         {
             throw new NotImplementedException();
         }

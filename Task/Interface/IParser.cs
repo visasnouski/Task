@@ -8,6 +8,6 @@ namespace Task
 {
     interface IParser
     {
-        Dictionary<City,int> GetCityDictionary();
+        Dictionary<string,int> GetCityDictionary();
     }
 }

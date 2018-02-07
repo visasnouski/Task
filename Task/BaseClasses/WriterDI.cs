@@ -7,12 +7,12 @@ using System.IO;
 
 namespace Task
 {
-    class WriterDI :IWriterDI
+    class WriterDI : IWriterDI
     {
-  public void Write(Dictionary<string, int> allcity, string filename)
+        public void Write(Dictionary<string, int> allcity, string filename)
         {
             Console.WriteLine("Запись в файл output.txt");
-            File.WriteAllLines(filename,allcity.Select(kvp => string.Format("{0},{1}", kvp.Key, kvp.Value)));
+            File.WriteAllLines(filename, allcity.Select(kvp => string.Format("{0},{1}", kvp.Key, kvp.Value)),Encoding.UTF8);
         }
     }
 }
