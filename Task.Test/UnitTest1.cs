@@ -13,7 +13,7 @@ namespace Task.Test
         [TestInitialize]
         public void TestInitialize()
         {
-            string[] _data = new string[] { "Санкт-Петербург,100", "Минск, 99", "минск,1", "Молодечно,40", "Березинское,56", "圣彼得堡,5666", "מינסק,7777" };
+            string[] _data = new string[] { "Санкт-Петербург,100", "Минск,99", "минск,1", "Молодечно,40", "Березинское,56", "圣彼得堡,5666", "מינסק,7777" };
             Directory.CreateDirectory(path);
             File.WriteAllLines(path + filename, _data, System.Text.Encoding.UTF8);
         }

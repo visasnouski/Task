@@ -13,47 +13,38 @@ namespace Task
         public Dictionary<string, int> GetCityDictionary(IEnumerable<string> listEnum)
         {
             Dictionary<string, int> dc = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-            Regex regex = new Regex(",");
+
             foreach (var x in listEnum)
             {
-                string key = regex.Split(x)[0];
-                int value =Convert.ToInt32(regex.Split(x)[1]);
-                if (dc.ContainsKey(key))
-                {
-                    dc[key] += value;
-
-                }
-                else
-                {
-                    dc.Add(key, value);
-                }
+                Split(x, out string key, out int popul);
+                if (key != null & key != "")
+                    if (dc.ContainsKey(key))
+                    {
+                        dc[key] += popul;
+                    }
+                    else
+                    {
+                        dc.Add(key, popul);
+                    }
             }
             return dc;
         }
-        private static int GetPopulation(string line)
+        private static void Split(string line, out string name, out int population)
         {
+            name = null;
+            population = 0;
             try
             {
-                return Convert.ToInt32(line.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[1]);
+                string[] sp = Regex.Split(line, @"(?=.)(,)(?=\d)");
+                name = sp[0];
+                population = Convert.ToInt32(sp[2]);
             }
             catch (Exception exp)
             {
                 Console.WriteLine(exp.Message);
-                return 0;
-            }
-        }
-        private static string GetName(string line)
-        {
-            try
-            {
-                return line.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[0];
-            }
-            catch (Exception exp)
-            {
-                Console.WriteLine(exp.Message);
-                return "";
+                name = null;
+                population = 0;
             }
         }
     }
-   
 }
