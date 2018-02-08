@@ -14,7 +14,7 @@ namespace Task
         public static string path;
         public static void Main(string[] args)
         {
-            args=new string[] { @"f:\testtask\base\" }; 
+          
            if (args.Length>0)
             {
                 path = args[0];
