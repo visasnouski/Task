@@ -9,10 +9,11 @@ namespace Task
 {
     class ParserDI : IParser
     {
-
-        public Dictionary<string, int> GetCityDictionary(IEnumerable<string> listEnum)
+        static object locker = new object();
+        public Dictionary<string, int> GetCityDictionary(IEnumerable<string> listEnum )
         {
-            Dictionary<string, int> dc = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+
+            Dictionary<string, int> dc = new Dictionary<string,int>(StringComparer.OrdinalIgnoreCase);
 
             foreach (var x in listEnum)
             {
@@ -20,14 +21,20 @@ namespace Task
                 if (key != null & key != "")
                     if (dc.ContainsKey(key))
                     {
+
                         dc[key] += popul;
+
                     }
                     else
                     {
+
                         dc.Add(key, popul);
+
                     }
             }
             return dc;
+
+
         }
         private static void Split(string line, out string name, out int population)
         {
@@ -46,5 +53,7 @@ namespace Task
                 population = 0;
             }
         }
+
+      
     }
 }

@@ -9,5 +9,7 @@ namespace Task
     interface IParser
     {
         Dictionary<string,int> GetCityDictionary(IEnumerable<string> listEnum);
+
+       
     }
 }

@@ -51,6 +51,8 @@
     <Compile Include="StartClasses\DataSourceStart.cs" />
     <Compile Include="StartClasses\ParserStart.cs" />
     <Compile Include="BaseClasses\WriterDI.cs" />
+    <Compile Include="StartClasses\StreamReaderEnumerable.cs" />
+    <Compile Include="StartClasses\StreamReaderEnumerator.cs" />
     <Compile Include="StartClasses\WriterStart.cs" />
   </ItemGroup>
   <ItemGroup>

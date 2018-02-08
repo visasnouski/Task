@@ -10,43 +10,28 @@ namespace Task
 {
     class DataSourceDI : IDataSource
     {
-      public IEnumerable<string> GetData()
+      
+        public IEnumerable<string> GetData(object obj)
         {
-            string path = Program.path;
-            if (path.Length >= 1 && Directory.Exists(path))
+            try
             {
-                string[] files = Directory.GetFiles(path);
-                return NeeData(files);
+                string files = (string)obj;
+                IEnumerable<string> data = from line in new StreamReaderEnumerable(files)
+                                           where line.Contains(',')
+                                           select line;
+
+                return data;
             }
-            else
+            catch
             {
-                Console.WriteLine("Папка не найдена");
                 return null;
             }
-
         }
-       
-        private IEnumerable<string> NeeData(string[] files)
+        public IEnumerable<string> GetData()
         {
-            List<string> alldata = new List<string>();
-            int N = Convert.ToInt32(ConfigurationSettings.AppSettings["N"]);
-            Parallel.For(0, files.Length, new ParallelOptions { MaxDegreeOfParallelism = N },  //Обработка файлов производится параллельно, максимум N файлов одновременно
-                i =>
-               {
-                   using (StreamReader reader = new StreamReader(files[i], Encoding.Default))
-                   {
-                       string line = "";
-                       lock (line)
-                       {
-                           while ((line = reader.ReadLine()) != null)
-                           {
-                               alldata.Add(line);
-                           }
-                       }
-                   }
-               });
-            return alldata;
+            throw new NotImplementedException();
         }
+
 
     }
 }

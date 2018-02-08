@@ -13,11 +13,11 @@ namespace Task
         {
             _DataSource = DataSourceDI;
         }
-        public IEnumerable<string> GetData()
+        public IEnumerable<string> GetData(object obj)
         {
             try
             {
-              return  _DataSource.GetData();
+              return  _DataSource.GetData(obj);
             }
             catch (Exception p)
             {
@@ -26,5 +26,10 @@ namespace Task
             }
         }
 
+        public IEnumerable<string> GetData()
+        {
+            throw new NotImplementedException();
+
+        }
     }
 }
