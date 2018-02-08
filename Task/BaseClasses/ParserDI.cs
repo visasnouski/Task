@@ -11,7 +11,6 @@ namespace Task
 
         public Dictionary<string, int> GetCityDictionary(IEnumerable<string> listEnum)
         {
-
             Dictionary<string, int> dc = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
             foreach (var x in listEnum)
             {

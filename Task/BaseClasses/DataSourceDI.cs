@@ -10,8 +10,7 @@ namespace Task
 {
     class DataSourceDI : IDataSource
     {
-        static IEnumerable<string> alllines;
-        public IEnumerable<string> GetData()
+      public IEnumerable<string> GetData()
         {
             string path = Program.path;
             if (path.Length >= 1 && Directory.Exists(path))
@@ -26,12 +25,10 @@ namespace Task
             }
 
         }
-        static IEnumerable<string> lines;
+       
         private IEnumerable<string> NeeData(string[] files)
         {
             List<string> alldata = new List<string>();
-            string seperator = "";
-            string itog = "";
             int N = Convert.ToInt32(ConfigurationSettings.AppSettings["N"]);
             Parallel.For(0, files.Length, new ParallelOptions { MaxDegreeOfParallelism = N },  //Обработка файлов производится параллельно, максимум N файлов одновременно
                 i =>
